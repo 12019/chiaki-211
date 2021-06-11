@@ -1,4 +1,4 @@
-image: 'Visual Studio 2017'
+image: 'Visual Studio 2019'
 
 branches:
   only:
@@ -13,8 +13,8 @@ install:
   - git submodule update --init --recursive
 
 build_script:
-  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
-  - C:\msys64\usr\bin\bash -lc "cd \"%APPVEYOR_BUILD_FOLDER%\" && scripts/appveyor.sh"
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+  - C:\msys64\usr\bin\bash -lc "cd \"%APPVEYOR_BUILD_FOLDER%\" && scripts/appveyor-win.sh"
 
 artifacts:
   - path: Chiaki
