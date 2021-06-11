@@ -10,6 +10,8 @@ if(CHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER)
 	find_package(SDL2 MODULE REQUIRED)
 endif()
 
+
+
 if(WIN32)
 	add_definitions(-DWIN32_LEAN_AND_MEAN)
 endif()
@@ -78,6 +80,15 @@ if(CHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER)
 	target_link_libraries(chiaki SDL2::SDL2)
 	target_compile_definitions(chiaki PRIVATE CHIAKI_GUI_ENABLE_SDL_GAMECONTROLLER)
 endif()
+#
+# Necessary libraries such as OpenCV and ZMQ
+#
+target_link_libraries(chiaki opencv_core)
+target_link_libraries(chiaki opencv_highgui)
+target_link_libraries(chiaki zmq)
+target_link_libraries(chiaki FFMPEG::swscale)
+#
+
 if(CHIAKI_ENABLE_SETSU)
 	target_link_libraries(chiaki setsu)
 	target_compile_definitions(chiaki PRIVATE CHIAKI_GUI_ENABLE_SETSU)
